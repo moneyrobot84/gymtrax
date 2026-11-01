@@ -331,7 +331,7 @@ a { color: inherit; }
   background: var(--surface);
   border-top-left-radius: 20px; border-top-right-radius: 20px;
   padding: 14px 16px calc(16px + var(--safe-bottom));
-  max-height: 85vh; overflow-y: auto;
+  max-height: 92vh; overflow-y: auto;
   animation: slideUp 220ms cubic-bezier(0.25, 1.2, 0.5, 1);
   border-top: 1px solid var(--line);
 }
@@ -393,3 +393,7 @@ a { color: inherit; }
 
 /* -------- No horizontal scroll even at 375px -------- */
 input, select { max-width: 100%; }
+
+/* -------- 3D form demo (ported from GymTrax Beta) -------- */
+.ex-motion { display: block; width: 100%; height: min(78vh, 640px); border: 0; margin-top: 12px; border-radius: 12px; background: var(--bg, #121314); }
+.demo-btn { display: inline-flex; align-items: center; gap: 6px; margin: 6px 0 2px; padding: 4px 10px; min-height: 30px; border-radius: 999px; border: 1px solid rgba(255,107,26,.45); background: rgba(255,107,26,.08); color: #FF6B1A; font-weight: 600; font-size: 12px; }

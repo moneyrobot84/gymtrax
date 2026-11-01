@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GymTrax motion</title>
+<style>
+  :root { color-scheme: dark; --bg:#121314; --s:#1B1C1E; --s2:#232527; --ink:#F5F5F2; --mute:#8D9094; --acc:#FF6B1A; --line:#2F3134; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 Figtree, -apple-system, system-ui, sans-serif; }
+  .stage { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--bg); border-radius: 14px; overflow: hidden; }
+  .stage canvas { width: 100%; height: 100%; display: block; }
+  .chip { position: absolute; left: 10px; top: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(27,28,30,.85); border: 1px solid var(--line); font-weight: 600; font-size: 12px; }
+  .chip.effort { color: #121314; background: var(--acc); border-color: var(--acc); }
+  .rep { position: absolute; right: 10px; top: 10px; font-size: 12px; color: var(--mute); }
+  .approx { position: absolute; left: 10px; bottom: 10px; right: 10px; font-size: 11px; color: var(--mute); background: rgba(18,19,20,.8); padding: 4px 8px; border-radius: 8px; }
+  .cue { min-height: 40px; margin: 10px 2px 8px; color: var(--ink); }
+  .row { display: flex; gap: 8px; align-items: center; margin: 8px 0; }
+  button { font: inherit; color: var(--ink); background: var(--s2); border: 1px solid var(--line); border-radius: 999px; min-height: 40px; padding: 0 14px; cursor: pointer; }
+  button[aria-pressed="true"] { background: var(--acc); color: #121314; border-color: var(--acc); font-weight: 700; }
+  .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+  input[type=range] { flex: 1; accent-color: var(--acc); }
+  h3 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 14px 0 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,107,26,.5); color: var(--acc); background: rgba(255,107,26,.08); font-weight: 600; font-size: 12px; }
+  .tempo small { display: block; color: var(--mute); font-size: 11px; }
+  .off { padding: 24px; color: var(--mute); text-align: center; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>window.GT = window.GT || {};</script>
+<script src="three.min.js"></script>
+<script src="engine.js"></script>
+<script src="motions.js"></script>
+<script src="player.js"></script>
+</body>
+</html>

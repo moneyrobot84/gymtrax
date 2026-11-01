@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from './Icon.jsx';
 import { PatternDemo } from './PatternDemo.jsx';
+import { motionUrl, musclesFor } from '../data/motions.js';
 
 export default function ExerciseSheet({ ex, onClose }) {
   if (!ex) return null;
@@ -13,15 +14,26 @@ export default function ExerciseSheet({ ex, onClose }) {
           <div>
             <div className="display" style={{ fontSize: 22, textTransform: 'uppercase' }}>{ex.name}</div>
             <div className="muted" style={{ fontSize: 12 }}>{ex.muscleGroup} · Rest {ex.rest}s</div>
+            {musclesFor(ex.id).length > 0 && (
+              <div className="muted" style={{ fontSize: 12, marginTop: 2 }}>Builds: <b style={{ color: '#FF6B1A' }}>{musclesFor(ex.id).join(' · ')}</b></div>
+            )}
           </div>
           <button className="btn btn-icon btn-ghost" onClick={onClose} aria-label="close" data-testid="sheet-close">
             <Icon name="close" />
           </button>
         </div>
-        <div className="ex-demo" style={{ marginTop: 12 }}>
-          <PatternDemo pattern={ex.pattern} />
-        </div>
-        <ol style={{ marginTop: 14, paddingLeft: 18 }}>
+        {motionUrl(ex.id) ? (
+          <iframe
+            className="ex-motion" title={`${ex.name} 3D form demo`} src={motionUrl(ex.id)}
+            data-testid="sheet-motion" loading="lazy"
+          />
+        ) : (
+          <div className="ex-demo" style={{ marginTop: 12 }}>
+            <PatternDemo pattern={ex.pattern} />
+          </div>
+        )}
+        <h3 className="muted" style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', margin: '12px 0 4px' }}>Form cues</h3>
+        <ol style={{ marginTop: 4, paddingLeft: 18 }}>
           {ex.cues.map((c, i) => (
             <li key={i} style={{ marginBottom: 6 }}>{c}</li>
           ))}

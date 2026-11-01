@@ -23,6 +23,7 @@ export default defineConfig(({ command }) => {
         workbox: {
           globPatterns: ['**/*.{js,css,html,png,svg,webmanifest,woff2}'],
           navigateFallback: 'index.html',
+          navigateFallbackDenylist: [/\/motion\//],
           cleanupOutdatedCaches: true,
           runtimeCaching: [
             {

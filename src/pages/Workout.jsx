@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from '../components/Icon.jsx';
+import { musclesFor } from '../data/motions.js';
 import { PatternDemo } from '../components/PatternDemo.jsx';
 import RestTimer from '../components/RestTimer.jsx';
 import ExerciseSheet from '../components/ExerciseSheet.jsx';
@@ -302,6 +303,9 @@ export default function Workout() {
                   </button>
                   {sug.badge && <span className={`pill ${sug.badge.tone === 'orange' ? 'pill-accent' : sug.badge.tone === 'blue' ? 'pill' : 'pill'}`} style={sug.badge.tone === 'blue' ? { color: '#8bb6ff', borderColor: 'rgba(139,182,255,0.35)', background: 'rgba(139,182,255,0.08)' } : undefined} data-testid={`sug-badge-${idx}`}>{sug.badge.label}</span>}
                 </div>
+                <button className="demo-btn" onClick={() => setSheetEx(ex)} data-testid={`demo-btn-${idx}`}>
+                  <Icon name="play" size={12} /> 3D demo{musclesFor(ex.id).length ? ` · ${musclesFor(ex.id).join(', ')}` : ''}
+                </button>
                 <div className="meta">{ex.muscleGroup} · {e.targetSets}×{e.targetReps} · Rest {ex.rest}s{isDbVar ? ' · kg per dumbbell' : ''}</div>
               </div>
               <div className="right">
